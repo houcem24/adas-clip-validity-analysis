@@ -1,0 +1,559 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Features Machine Learning {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+* { box-sizing:border-box; }
+
+/* basic stylings ------------------------------------------ */
+body 				 { background:url(https://scotch.io/wp-content/uploads/2014/07/61.jpg); }
+.container 		{
+  font-family:'Roboto';
+  width:600px;
+  margin:30px auto 0;
+  display:block;
+  background:#FFF;
+  padding:10px 50px 50px;
+}
+.footer 	{ text-align:center; }
+.footer a  { color:#53B2C8; }
+
+/* form starting stylings ------------------------------- */
+.group 			  {
+  position:relative;
+  margin-bottom:45px;
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color: #f338ff;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+:root {
+  --gray: #34495e;
+  --darkgray: #2c3e50;
+}
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 10px red;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+
+/* Other styles*/
+
+a {
+  font-weight: bold;
+  color: var(--gray);
+  text-decoration: drop-shadow;
+  padding: .25em;
+  border-radius: .50em;
+}
+
+/* 가운데정렬 - position,transform*/
+.container {
+  position : absolute;
+  top: 50%;
+  left : 50%;
+  transform :
+  translate(-50%,-50%);
+}
+
+/* 가운데정렬 - flexbox*/
+/* 근데 이건 1행 정렬이된다. */
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: absolute;
+} */
+
+.down_note {
+    display: flex;
+    justify-content: center;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #050801;
+    font-family: 'Raleway', sans-serif;
+}
+
+button{
+  padding: 25px 30px;
+  background-color: #050801;
+  color: #03e9f4;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+button:hover{
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+    <br><br><br>
+
+    <div class="content">
+    <form action="/predict" method="post">
+        <center><h2>Categorical Features</h2></center>
+        <div class="row">
+           <div class="col-md-4">
+                 <div class="select">
+
+        <select id="Deviation" name="Deviation">
+            <option value="0">NO DEVIATION</option>
+            <option value="1">SMALL DEVIATION 0.5</option>
+            <option value="2">FIXED DEVIATION 0.75</option>
+            <option value="3">FIXED DEVIATION 1.25</option>
+        </select><br><br></div>
+           </div>
+<br><br><br><br>
+              <div class="col-md-4"><div class="select">
+        <select id="Maneuver" name="Maneuver">
+            <option value="0">STRAIGHT</option>
+            <option value="1">S SHAPE</option>
+            <option value="2">CURVED</option>
+        </select><br><br>
+              </div>
+              </div>
+<br><br><br><br>
+              <div class="col-md-4"><div class="select">
+        <select id="WeatherCondition" name="WeatherCondition">
+            <option value="0">CLEAR</option>
+            <option value="1">CLOUDY</option>
+            <option value="2">RAIN</option>
+            <option value="3">FOG</option>
+            <option value="4">SNOWING</option>
+        </select><br><br>
+              </div>
+              </div>
+<br><br><br><br>
+              <div class="col-md-4"><div class="select">
+        <select id="ParkingGarage" name="ParkingGarage">
+            <option value="0">GARAGE CARPORT</option>
+            <option value="1">OUTSIDE</option>
+        </select><br><br>
+              </div>
+              </div>
+<br><br><br><br>
+             <div class="col-md-4"><div class="select">
+        <select id="ArtificialLight" name="ArtificialLight">
+            <option value="0">STREET LIGHTS</option>
+            <option value="1">NO STREET LIGHTS</option>
+        </select><br><br>
+             </div>
+             </div>
+<br><br><br><br>
+ <div class="col-md-4"><div class="select">
+        <select id="DynamicObjects" name="DynamicObjects">
+            <option value="0">DYNAMIC OBJECTS IN SCENE</option>
+            <option value="1">NO DYNAMIC OBJECTS IN SCENE</option>
+        </select><br><br>
+ </div>
+ </div>
+<br><br><br><br>
+              <div class="col-md-4"><div class="select">
+
+        <select id="DirectionChange" name="DirectionChange">
+            <option value="0">DIRECTION CHANGE</option>
+            <option value="1">FORWARD</option>
+            <option value="2">BACKWARDS</option>
+        </select><br><br>
+              </div>
+              </div>
+<br><br><br><br>
+              <div class="col-md-4"><div class="select">
+
+        <select id="LightCondition" name="LightCondition">
+            <option value="0">DAY</option>
+            <option value="1">NIGHT</option>
+            <option value="2">TWILIGHT</option>
+        </select><br><br>
+              </div>
+              </div>
+<br><br><br><br>
+         <div class="col-md-4"><div class="select">
+
+        <select id="ParkingManeuver" name="ParkingManeuver">
+            <option value="0">PARK IN</option>
+            <option value="1">PARK OUT</option>
+        </select><br><br>
+         </div>
+         </div>
+<br><br><br><br>
+ <div class="col-md-4"><div class="select">
+
+        <select id="Seasons" name="Seasons">
+            <option value="0">GREEN TREES</option>
+            <option value="1">LEAVES ON GROUND</option>
+            <option value="2">TREES WITHOUT LEAVES</option>
+            <option value="3">SNOW ON GROUND</option>
+        </select><br><br>
+ </div>
+ </div>
+<br><br><br><br>
+         <div class="col-md-4"><div class="select">
+
+        <select id="StaticObjects" name="StaticObjects">
+            <option value="0">STATIC OBJECTS IN SCENE</option>
+            <option value="1">NO STATIC OBJECTS IN SCENE</option>
+        </select><br><br>
+         </div>
+         </div>
+<br><br><br><br>
+         <div class="col-md-4"><div class="select">
+
+        <select id="Location" name="Location">
+            <option value="0">LOCATION 02</option>
+            <option value="1">LOCATION 03</option>
+            <option value="2">LOCATION 04</option>
+            <option value="3">LOCATION 05</option>
+            <option value="4">LOCATION 08</option>
+            <option value="5">LOCATION 09</option>
+            <option value="6">LOCATION 10</option>
+            <option value="7">LOCATION 12</option>
+            <option value="8">LOCATION 13</option>
+            <option value="9">LOCATION 14</option>
+            <option value="10">LOCATION 16</option>
+            <option value="11">LOCATION 17</option>
+            <option value="12">LOCATION 19</option>
+            <option value="13">LOCATION 21</option>
+            <option value="14">LOCATION 22</option>
+            <option value="15">LOCATION 23</option>
+            <option value="16">LOCATION 24</option>
+            <option value="17">LOCATION 25</option>
+            <option value="18">LOCATION 26</option>
+            <option value="19">LOCATION 27</option>
+            <option value="20">LOCATION 28</option>
+            <option value="21">nan</option>
+        </select><br><br>
+         </div> </div>
+         </div>
+<br><br><br>
+        <center><h2>Video Start Features</h2></center>
+         <div class="row">
+             <div class="col-md-4">
+                 <div class="group">
+                    <input type="text" id="VID_START_FRAME" name="VID_START_FRAME" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>FRAME NUMBER</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                   <input type="text" id="VID_START_ELV" name="VID_START_ELV" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>ELEVATION:</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                    <input type="text" id="VID_START_LAT" name="VID_START_LAT" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LATITUDE</label>
+                 </div>
+             </div>
+                 <div class="col-md-4">
+                 <div class="group">
+                   <input type="text" id="VID_START_LNG" name="VID_START_LNG" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LONGITUDE</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                   <input type="text" id="VID_START_TSTMP" name="VID_START_TSTMP" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>TIMESTAMP</label>
+                 </div>
+             </div>
+
+         </div>
+
+       <center> <h2>Scene Start Features</h2></center>
+        <div class="row">
+              <div class="col-md-4">
+                 <div class="group">
+                  <input type="text" id="SCN_START_FRAME" name="SCN_START_FRAME" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>FRAME NUMBER</label>
+                 </div>
+             </div>
+   <div class="col-md-4">
+                 <div class="group">
+                  <input type="text" id="SCN_START_ELV" name="SCN_START_ELV" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>ELEVATION</label>
+                 </div>
+             </div>
+            <div class="col-md-4">
+                 <div class="group">
+                  <input type="text" id="SCN_START_LAT" name="SCN_START_LAT" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LATITUDE</label>
+                 </div>
+             </div>
+            <div class="col-md-4">
+                 <div class="group">
+                  <input type="text" id="SCN_START_LNG" name="SCN_START_LNG" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LONGITUDE:</label>
+                 </div>
+             </div>
+            <div class="col-md-4">
+                 <div class="group">
+                   <input type="text" id="SCN_START_TSTMP" name="SCN_START_TSTMP" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>TIMESTAMP</label>
+                 </div>
+            </div> </div>
+
+        <center><h2>Scene End Features</h2></center>
+
+          <div class="row">
+                 <div class="col-md-4">
+                 <div class="group">
+                    <input type="text" id="SCN_END_FRAME" name="SCN_END_FRAME" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>FRAME NUMBER</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="SCN_END_ELV" name="SCN_END_ELV" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>ELEVATION</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="SCN_END_LAT" name="SCN_END_LAT" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LATITUDE</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="SCN_END_LNG" name="SCN_END_LNG" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LONGITUDE</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="SCN_END_TSTMP" name="SCN_END_TSTMP" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>TIMESTAMP</label>
+                 </div>
+             </div>
+          </div>
+
+       <center> <h2>Video End Features</h2></center>
+         <div class="row">
+                 <div class="col-md-4">
+                 <div class="group">
+                    <input type="text" id="VID_END_FRAME" name="VID_END_FRAME" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>FRAME NUMBER</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="VID_END_ELV" name="VID_END_ELV" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>ELEVATION</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="VID_END_LAT" name="VID_END_LAT" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LATITUDE</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="VID_END_LNG" name="VID_END_LNG" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>LONGITUDE</label>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="group">
+                     <input type="text" id="VID_END_TSTMP" name="VID_END_TSTMP" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                   <label>TIMESTAMP</label>
+                 </div>
+             </div> </div>
+
+
+       <center>
+<button type="submit" value="submit">
+PREDICT
+</button></center>
+    </form>
+
+    </div>
+{% endblock content %}

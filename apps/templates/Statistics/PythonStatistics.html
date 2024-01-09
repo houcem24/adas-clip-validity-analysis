@@ -1,0 +1,54 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Stats {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="content">
+   <center>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <h1>JSON files Statistics</h1>
+
+    <div id="chart"></div>
+
+    <script type="text/javascript">
+        // Retrieve the chart data from Flask
+        var chartData = {{ chart_json|safe }};
+
+        // Render the chart using Plotly
+        Plotly.newPlot('chart', chartData.data, chartData.layout);
+    </script>
+<br>
+<br>
+       <h1>Visualizations from Python</h1>
+       <br>
+<br>
+
+    <img src="../../static/assets/img/1.png" alt="Image Description">
+<br>
+<br>
+    <img src="../../static/assets/img/2.png" alt="Image Description">
+
+<br>
+<br>
+    <img src="../../static/assets/img/3.png" alt="Image Description">
+       <br>
+         <br>
+<img src="../../static/assets/img/4.png" width="800" height="auto" alt="Image Description">
+        <br>
+        <br>
+<img src="../../static/assets/img/6.png" width="800" height="auto" alt="Image Description">
+        <br><br>
+<img src="../../static/assets/img/7.png" width="800" height="auto" alt="Image Description">
+        <br><br>
+<img src="../../static/assets/img/8.png" width="800" height="auto" alt="Image Description">
+        </center>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,71 @@
+
+    <div class="sidebar">
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+      -->
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="javascript:void(0)" class="simple-text logo-mini">
+                    ME
+                </a>
+                <a href="javascript:void(0)" class="simple-text logo-normal">
+                    Magna Electronics
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="{% if 'index' in segment %} active {% endif %} ">
+                    <a href="/">
+                        <i class="tim-icons icon-laptop"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+            <li class="{% if 'Prediction' in segment %} active {% endif %}">
+                    <a href="/predict">
+                        <i class="tim-icons icon-notes"></i>
+                        <p>Prediction</p>
+                    </a>
+                </li>
+             <li class="{% if 'Data' in segment %} active {% endif %}">
+                    <a href="/data">
+                        <i class="tim-icons icon-cloud-download-93"></i>
+                        <p>Dataframe Sample</p>
+                    </a>
+                </li>
+            <li class="{% if 'Statistics' in segment %} active {% endif %}">
+                    <a href="/stats">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p>Statistics</p>
+                    </a>
+                </li>
+            </li><li class="{% if 'Blogs' in segment %} active {% endif %}">
+                    <a href="/blogs">
+                        <i class="tim-icons icon-paper"></i>
+                        <p>Automotive Industry Blogs</p>
+                    </a>
+                </li>
+            <li class="{% if 'Contact Us!' in segment %} active {% endif %}">
+                    <a href="/contact.html">
+                        <i class="tim-icons icon-email-85"></i>
+                        <p>Contact Form</p>
+                    </a>
+                </li>
+                <li class="{% if 'map' in segment %} active {% endif %}">
+                    <a href="/map.html">
+                        <i class="tim-icons icon-map-big"></i>
+                        <p>Coordinates</p>
+                    </a>
+                </li>
+            <li class="{% if 'About Page' in segment %} active {% endif %}">
+                    <a href="/about.html">
+                        <i class="tim-icons icon-globe-2"></i>
+                        <p>About</p>
+                    </a>
+                <li>
+                    <a href="{{ url_for('authentication_blueprint.logout') }}">
+                        <i class="tim-icons icon-button-power"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>

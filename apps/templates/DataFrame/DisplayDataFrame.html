@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Data Frame {% endblock %}
+    <!-- Include Bootstrap CSS for table styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+{% block content %}
+    <div class="container">
+    <br>
+    <br>
+    <br>
+        <h1>Data Sample</h1>
+        <br>
+    <br>
+    <br>
+        <div class="table-container" style="overflow-x: auto; max-height: 700px;">
+        <!-- Render the DataFrame table as an HTML table -->
+        {{ table_html | safe }}
+        </div>
+    </div>
+{% endblock content %}

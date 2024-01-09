@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Prediction Results {% endblock %}
+
+{% block content %}
+    <br>
+    <style>
+    .content {
+        text-align: center;
+    }
+
+    .prediction-text {
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100px;
+    }
+
+    .valid {
+        color: white;
+        background-color: green;
+    }
+
+    .invalid {
+        color: white;
+        background-color: red;
+    }
+</style>
+
+    <br>
+    <br>
+    <br>
+    <div class="content">
+        {% if rf_prediction == 1 %}
+            <p>Your Prediction is  <span id="predictionValue" class="prediction-text valid">Valid</span></p>
+        {% else %}
+            <p>Your Prediction is <span id="predictionValue" class="prediction-text invalid">Invalid</span></p>
+        {% endif %}
+    </div>
+{% endblock content %}
