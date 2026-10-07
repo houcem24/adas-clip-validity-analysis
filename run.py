@@ -7,7 +7,6 @@ import os
 from   flask_migrate import Migrate
 from   flask_minify  import Minify
 from   sys import exit
-
 from apps.config import config_dict
 from apps import create_app, db
 
