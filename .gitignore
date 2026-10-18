@@ -31,3 +31,9 @@ runs/
 # Local database
 *.sqlite3
 node_modules/
+
+# Confidential recording data: only the synthetic examples may be committed
+Clips/*
+!Clips/README.md
+!Clips/W00_SYNTHETIC_*/
+/flask_data*.csv

@@ -1,0 +1,551 @@
+{
+    "metadata": {
+        "comment": "SYNTHETIC EXAMPLE - not real recording data",
+        "campaign": "EXAMPLE_CAMPAIGN",
+        "driver_id": "DRIVER_012",
+        "vehicle_id": "SYNTHETIC-VEHICLE-02",
+        "vehicle_number_plate": "XX-XX 0000",
+        "brand": "OEM",
+        "model": "EXAMPLE_MODEL",
+        "group_project_name": "EXAMPLE_PROJECT",
+        "governance": {
+            "location": "EXAMPLE_SITE",
+            "pool": "example_pool"
+        },
+        "logger": "EXAMPLE_LOGGER",
+        "meta_data_version": "1.0.0",
+        "driving_side": "RIGHT_DRIVING_SIDE",
+        "steering_wheel_side": "LEFT_HAND_DRIVE",
+        "tire_type": "SUMMER_TIRE"
+    },
+    "prelabels": [
+        {
+            "category": "Deviation",
+            "postion_coordinates": {
+                "latitude": 49.3534432,
+                "elevation": 118.83,
+                "longitude": 9.8724315
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "DEV_4_FIXED_1_25",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "Maneuver",
+            "postion_coordinates": {
+                "latitude": 49.3516319,
+                "elevation": 249.96,
+                "longitude": 9.8741338
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "MAN_3_CURVED",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "WeatherCondition",
+            "postion_coordinates": {
+                "latitude": 49.3510426,
+                "elevation": 321.68,
+                "longitude": 9.8736684
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "WEA_5_SNOWING",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "ParkingGarage",
+            "postion_coordinates": {
+                "latitude": 49.3530334,
+                "elevation": 365.45,
+                "longitude": 9.8736051
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "GAR_1_GARAGE_CARPORT",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "DrivingMode",
+            "postion_coordinates": {
+                "latitude": 49.3534008,
+                "elevation": 222.69,
+                "longitude": 9.8725348
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "DRVM_3_20_TO_40_KPH",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "ArtificialLight",
+            "postion_coordinates": {
+                "latitude": 49.3532193,
+                "elevation": 224.02,
+                "longitude": 9.8749052
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "STL_2_NO_STREET_LIGHTS",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "DynamicObjects",
+            "postion_coordinates": {
+                "latitude": 49.3531328,
+                "elevation": 168.74,
+                "longitude": 9.8750088
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "DOBJ_2_NO_DOBJ_IN_SCENE",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "DirectionChange",
+            "postion_coordinates": {
+                "latitude": 49.3517118,
+                "elevation": 156.56,
+                "longitude": 9.8736576
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "DIR_1_DIRECTION_CHANGE",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "LightCondition",
+            "postion_coordinates": {
+                "latitude": 49.3526275,
+                "elevation": 155.04,
+                "longitude": 9.8732415
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "LC_1_DAY",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "ParkingManeuver",
+            "postion_coordinates": {
+                "latitude": 49.3533455,
+                "elevation": 105.78,
+                "longitude": 9.8725014
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "PIO_1_PARK_IN",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "Seasons",
+            "postion_coordinates": {
+                "latitude": 49.3513055,
+                "elevation": 128.9,
+                "longitude": 9.8727539
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "SEA_1_GREEN_TREES",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "StaticObjects",
+            "postion_coordinates": {
+                "latitude": 49.3514328,
+                "elevation": 185.88,
+                "longitude": 9.8737618
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "SOBJ_2_SOBJ_PRESENT",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "Location",
+            "postion_coordinates": {
+                "latitude": 49.3500224,
+                "elevation": 346.53,
+                "longitude": 9.873456
+            },
+            "timestamp": 1631175415000000000,
+            "clipnumber": -1,
+            "label": "LOC_04",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 145779
+        },
+        {
+            "category": "SceneStartStop",
+            "postion_coordinates": {
+                "latitude": 49.3528525,
+                "elevation": 382.74,
+                "longitude": 9.8719763
+            },
+            "timestamp": 1631175425066666566,
+            "clipnumber": -1,
+            "label": "SCN_1_START",
+            "clipname_video": "N/A",
+            "state": "activated",
+            "conditions": {
+                "Deviation": [
+                    "DEV_4_FIXED_1_25"
+                ],
+                "Maneuver": [
+                    "MAN_3_CURVED"
+                ],
+                "WeatherCondition": [
+                    "WEA_5_SNOWING"
+                ],
+                "ParkingGarage": [
+                    "GAR_1_GARAGE_CARPORT"
+                ],
+                "DrivingMode": [
+                    "DRVM_3_20_TO_40_KPH"
+                ],
+                "ArtificialLight": [
+                    "STL_2_NO_STREET_LIGHTS"
+                ],
+                "DynamicObjects": [
+                    "DOBJ_2_NO_DOBJ_IN_SCENE"
+                ],
+                "DirectionChange": [
+                    "DIR_1_DIRECTION_CHANGE"
+                ],
+                "LightCondition": [
+                    "LC_1_DAY"
+                ],
+                "ParkingManeuver": [
+                    "PIO_1_PARK_IN"
+                ],
+                "Seasons": [
+                    "SEA_1_GREEN_TREES"
+                ],
+                "StaticObjects": [
+                    "SOBJ_2_SOBJ_PRESENT"
+                ],
+                "Location": [
+                    "LOC_04"
+                ]
+            },
+            "type": "single",
+            "frame_number": 146081
+        },
+        {
+            "category": "SceneStartStop",
+            "postion_coordinates": {
+                "latitude": 49.353296,
+                "elevation": 264.22,
+                "longitude": 9.873806
+            },
+            "timestamp": 1631175551166665305,
+            "clipnumber": -1,
+            "label": "SCN_2_STOP",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {
+                "Deviation": [
+                    "DEV_4_FIXED_1_25"
+                ],
+                "Maneuver": [
+                    "MAN_3_CURVED"
+                ],
+                "WeatherCondition": [
+                    "WEA_5_SNOWING"
+                ],
+                "ParkingGarage": [
+                    "GAR_1_GARAGE_CARPORT"
+                ],
+                "DrivingMode": [
+                    "DRVM_3_20_TO_40_KPH"
+                ],
+                "ArtificialLight": [
+                    "STL_2_NO_STREET_LIGHTS"
+                ],
+                "DynamicObjects": [
+                    "DOBJ_2_NO_DOBJ_IN_SCENE"
+                ],
+                "DirectionChange": [
+                    "DIR_1_DIRECTION_CHANGE"
+                ],
+                "LightCondition": [
+                    "LC_1_DAY"
+                ],
+                "ParkingManeuver": [
+                    "PIO_1_PARK_IN"
+                ],
+                "Seasons": [
+                    "SEA_1_GREEN_TREES"
+                ],
+                "StaticObjects": [
+                    "SOBJ_2_SOBJ_PRESENT"
+                ],
+                "Location": [
+                    "LOC_04"
+                ]
+            },
+            "type": "single",
+            "frame_number": 149864
+        },
+        {
+            "category": "Deviation",
+            "postion_coordinates": {
+                "latitude": 49.3535443,
+                "elevation": 175.56,
+                "longitude": 9.8734581
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "DEV_4_FIXED_1_25",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "Maneuver",
+            "postion_coordinates": {
+                "latitude": 49.3533399,
+                "elevation": 347.43,
+                "longitude": 9.874051
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "MAN_3_CURVED",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "WeatherCondition",
+            "postion_coordinates": {
+                "latitude": 49.3527119,
+                "elevation": 335.96,
+                "longitude": 9.8754894
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "WEA_5_SNOWING",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "ParkingGarage",
+            "postion_coordinates": {
+                "latitude": 49.3517263,
+                "elevation": 167.34,
+                "longitude": 9.8738407
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "GAR_1_GARAGE_CARPORT",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "DrivingMode",
+            "postion_coordinates": {
+                "latitude": 49.3513288,
+                "elevation": 294.04,
+                "longitude": 9.8750907
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "DRVM_3_20_TO_40_KPH",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "ArtificialLight",
+            "postion_coordinates": {
+                "latitude": 49.3526701,
+                "elevation": 348.96,
+                "longitude": 9.8755763
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "STL_2_NO_STREET_LIGHTS",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "DynamicObjects",
+            "postion_coordinates": {
+                "latitude": 49.3536963,
+                "elevation": 250.92,
+                "longitude": 9.8755258
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "DOBJ_2_NO_DOBJ_IN_SCENE",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "DirectionChange",
+            "postion_coordinates": {
+                "latitude": 49.3521409,
+                "elevation": 292.16,
+                "longitude": 9.8722339
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "DIR_1_DIRECTION_CHANGE",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "LightCondition",
+            "postion_coordinates": {
+                "latitude": 49.3514878,
+                "elevation": 357.39,
+                "longitude": 9.872625
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "LC_1_DAY",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "ParkingManeuver",
+            "postion_coordinates": {
+                "latitude": 49.350814,
+                "elevation": 184.75,
+                "longitude": 9.8737169
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "PIO_1_PARK_IN",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "Seasons",
+            "postion_coordinates": {
+                "latitude": 49.3511234,
+                "elevation": 361.48,
+                "longitude": 9.8730112
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "SEA_1_GREEN_TREES",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "StaticObjects",
+            "postion_coordinates": {
+                "latitude": 49.3535782,
+                "elevation": 214.9,
+                "longitude": 9.8752378
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "SOBJ_2_SOBJ_PRESENT",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        },
+        {
+            "category": "Location",
+            "postion_coordinates": {
+                "latitude": 49.3516546,
+                "elevation": 319.69,
+                "longitude": 9.8721065
+            },
+            "timestamp": 1631175557066665246,
+            "clipnumber": -1,
+            "label": "LOC_04",
+            "clipname_video": "N/A",
+            "state": "deactivated",
+            "conditions": {},
+            "type": "multi-select",
+            "frame_number": 150041
+        }
+    ]
+}
