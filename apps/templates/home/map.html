@@ -136,7 +136,7 @@ h1:before{
 {% block javascripts %}
 
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaG91c3NpMDA3IiwiYSI6ImNsa2owMTQxaTBmYjgzanQ4ZGIzanVhc3cifQ.3XSZW3MgKyZa2r8Y2P4J2A';
+        mapboxgl.accessToken = '{{ config.MAPBOX_TOKEN }}';
     const map = new mapboxgl.Map({
     container: 'map', // container ID
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
