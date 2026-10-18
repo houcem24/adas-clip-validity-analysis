@@ -1,4 +1,33 @@
-.venv/
+# Python
 __pycache__/
-.idea/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets and local config
 .env
+.env.*
+!.env.example
+
+# IDEs and OS files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Model and training artifacts
+runs/
+*.pt
+*.pth
+# *.pkl  (the trained model is committed on purpose so the demo app runs)
+*.h5
+
+# Local database
+*.sqlite3
+node_modules/
