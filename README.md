@@ -1,98 +1,72 @@
-Data Collection, Repair, Visualization & Analysis for Autonomous Vehicles Parts
+# Driving-Clip Validity Analysis for ADAS Data
 
-Repository: houcem24 / Data_Collection_Repair_Visualization_and_Analysis_For_Autonomous_Vehicles_Parts (github.com
-)
+Master's thesis project (ESPRIT, in collaboration with Magna Electronics, Sailauf). It turns a folder of
+recorded driving clips into a clean, analysable dataset, predicts whether a clip is valid for downstream use,
+and exposes the results through a Flask web app.
 
-This repository contains the implementation of a pipeline for data collection, repair, visualization, and analysis of autonomous vehicle parts data. It was developed as part of a Master’s Thesis by Houssem Ouerdiane at ESPRIT University, Tunisia, conducted in collaboration with Magna Electronics (Germany, Sailauf).
+Each clip comes with a JSON annotation describing the recorded scenario: weather, light conditions, maneuver,
+parking situation, static and dynamic objects, plus start/end frames, timestamps and GPS positions of the video
+and of the annotated scene. The project checks, repairs and models this metadata.
 
-The goal of this thesis was to design and implement a system capable of handling raw sensor and radar data from autonomous vehicles, ensuring data quality, enabling efficient preprocessing, and providing insightful analysis through visualization and prediction workflows.
+## What it does
 
-🚀 Features & Capabilities
+1. **Collection:** walks ~5,500 clip folders, keeps the ones with an annotation file and flattens each JSON
+   into one row (15,081 rows, 37 columns).
+2. **Repair and preprocessing:** fixes inconsistent categorical values, encodes the 13 scenario attributes,
+   imputes missing numeric fields and checks timestamp/frame consistency between video and scene boundaries.
+3. **Augmentation:** creates synthetic records by perturbing the video and scene timestamps of existing clips
+   (up to ±8 s) to enlarge the training set.
+4. **Modelling:** compares ten classifiers on predicting `CLIP_VALIDITY`.
+5. **Web app:** browse the dataset, view clip statistics, and get a validity prediction for a clip from a form.
 
-Data collection & ingestion from vehicle sensors and radar systems
+## Results
 
-Data repair & preprocessing including cleaning, anomaly detection, and error correction
+Held-out test set; about 66% of clips are valid, so always predicting "valid" scores 0.66 accuracy.
 
-Visualization dashboards to explore sensor behaviors, anomalies, and patterns
+| Model | Accuracy | Precision | Recall | F1 |
+|---|---|---|---|---|
+| **Random Forest + AdaBoost** | **0.71** | 0.73 | 0.87 | **0.80** |
+| Random Forest | 0.70 | 0.73 | 0.86 | 0.79 |
+| XGBoost | 0.69 | 0.72 | 0.87 | 0.79 |
+| KNN | 0.69 | 0.73 | 0.82 | 0.78 |
+| Gradient Boosting | 0.68 | 0.68 | 0.97 | 0.80 |
 
-Data analysis & predictive modeling for automotive use cases
+The tree ensembles beat the majority baseline by about five points; Logistic Regression, SVM and Naive Bayes
+collapsed to predicting the majority class. The Random Forest model is the one served by the web app.
 
-Web API integration (Flask) for serving and interacting with results
+## Repository structure
 
-Containerized deployment with Docker and Nginx
-
-Environment configuration support (.env, sample templates)
-
-📂 Repository Structure
-.
-├── .dockerignore
-├── .env
-├── .gitignore
-├── CHANGELOG.md
-├── Dockerfile
-├── LICENSE.md
-├── README.md
+```
+├── Prediction.ipynb               # Data collection, repair, augmentation, modelling, evaluation
+├── Clips/                         # Raw clip annotations (one folder per recording)
+├── flask_data_no_encoder.csv      # Flattened dataset produced by the notebook
+├── run.py                         # Flask entry point
 ├── apps/
-├── media/
-├── nginx/
-├── Prediction.ipynb
-├── flask_data_no_encoder.csv
-├── docker-compose.yml
-├── env.sample
-├── run.py
-├── requirements.txt
-├── gulpfile.js
-├── gunicorn-cfg.py
-└── package.json
+│   ├── authentication/routes.py   # Data view, statistics, prediction form and login routes
+│   ├── authentication/model_RandomForest.pkl
+│   ├── home/                      # Static pages
+│   └── templates/                 # Jinja templates (DataFrame/, Prediction/, Statistics/, ...)
+├── Dockerfile, docker-compose.yml, nginx/, gunicorn-cfg.py
+└── env.sample                     # Configuration template
+```
 
-📌 Getting Started
-Prerequisites
+## Running the app
 
-Python 3.x
-
-Docker & Docker Compose (optional, for containerized deployment)
-
-Flask / Gunicorn web server setup
-
-Node.js (for optional frontend build steps)
-
-Installation
-git clone https://github.com/houcem24/Data_Collection_Repair_Visualization_and_Analysis_For_Autonomous_Vehicles_Parts.git
-cd Data_Collection_Repair_Visualization_and_Analysis_For_Autonomous_Vehicles_Parts
+```bash
+git clone https://github.com/houcem24/adas-clip-validity-analysis.git
+cd adas-clip-validity-analysis
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+cp env.sample .env          # then set SECRET_KEY (and MAPBOX_TOKEN for the map page)
+flask run                   # or: docker-compose up --build
+```
 
-Running the Application
-python run.py
+Open http://127.0.0.1:5000, register a local account, and use the sidebar to reach the data, statistics and
+prediction pages.
 
+## Credits
 
-Or via Docker:
-
-docker-compose up --build
-
-🧪 Usage & Workflow
-
-Collect raw automotive sensor data
-
-Apply repair & preprocessing steps (cleaning, imputation, anomaly detection)
-
-Transform into structured formats suitable for analysis
-
-Visualize patterns and system performance
-
-Run prediction workflows (Prediction.ipynb) to derive insights
-
-Deploy results via Flask API or dashboards
-
-📈 Results
-
-Ensures higher reliability of autonomous vehicle data pipelines
-
-Enables clear visualizations of trends, anomalies, and repaired data
-
-Provides a scalable, containerized deployment option for integration with enterprise systems
-
-
-
-📬 Acknowledgment
-
-This project was completed as a Master’s Thesis by Houssem Ouerdiane at ESPRIT University (Tunisia) in collaboration with Magna Electronics (Germany, Sailauf).
+The web interface is built on the open-source
+[Black Dashboard Flask](https://github.com/app-generator/flask-black-dashboard) template by Creative Tim and
+AppSeed (MIT, see [LICENSE.md](LICENSE.md) and [CHANGELOG.md](CHANGELOG.md)). The data pipeline, the model, and
+the data, statistics and prediction pages are my own work.
